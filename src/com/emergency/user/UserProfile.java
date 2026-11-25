@@ -1,8 +1,5 @@
 package com.emergency.user;
 
-/**
- * Formats and displays detailed user profile information.
- */
 public class UserProfile {
 
     public static void printProfile(User user) {

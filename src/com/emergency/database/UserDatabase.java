@@ -3,9 +3,6 @@ package com.emergency.database;
 import java.util.ArrayList;
 import com.emergency.user.User;
 
-/**
- * In-memory storage layer for users using ArrayList collection.
- */
 public class UserDatabase {
     private ArrayList<User> userList;
 

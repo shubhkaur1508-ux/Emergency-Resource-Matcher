@@ -2,9 +2,6 @@ package com.emergency.user;
 
 import com.emergency.database.UserDatabase;
 
-/**
- * Validates and authenticates user login details using stored users.
- */
 public class UserLogin {
     private UserDatabase userDatabase;
 

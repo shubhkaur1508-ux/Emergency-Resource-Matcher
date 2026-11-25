@@ -3,9 +3,6 @@ package com.emergency.user;
 import com.emergency.database.UserDatabase;
 import com.emergency.exceptions.DuplicateUserException;
 
-/**
- * Handles validation and registration of new users.
- */
 public class UserRegistration {
     private UserDatabase userDatabase;
 

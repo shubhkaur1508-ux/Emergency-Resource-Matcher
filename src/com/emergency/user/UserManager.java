@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import com.emergency.database.UserDatabase;
 import com.emergency.exceptions.DuplicateUserException;
 
-/**
- * Coordinates user management operations like registration, lookup, and listing.
- */
 public class UserManager {
     private UserDatabase userDatabase;
     private UserRegistration userRegistration;
