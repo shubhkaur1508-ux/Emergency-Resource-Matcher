@@ -10,10 +10,16 @@ public class UserLogin {
     }
 
     public boolean authenticate(String userId) {
-        return userDatabase.isUserExists(userId);
+        if (userId == null || userId.trim().isEmpty()) {
+            return false;
+        }
+        return userDatabase.isUserExists(userId.trim());
     }
 
     public User getUser(String userId) {
-        return userDatabase.findUserById(userId);
+        if (userId == null || userId.trim().isEmpty()) {
+            return null;
+        }
+        return userDatabase.findUserById(userId.trim());
     }
 }
