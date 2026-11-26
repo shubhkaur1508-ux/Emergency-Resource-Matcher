@@ -1,8 +1,5 @@
 package com.emergency.user;
 
-/**
- * Stores emergency contact details for a user.
- */
 public class EmergencyContact {
     private String contactName;
     private String relationship;

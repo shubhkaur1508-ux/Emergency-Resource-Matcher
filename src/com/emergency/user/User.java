@@ -1,8 +1,5 @@
 package com.emergency.user;
 
-/**
- * Stores basic information of a registered user.
- */
 public class User {
     private String userId;
     private String fullName;

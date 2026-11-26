@@ -3,9 +3,6 @@ package com.emergency.user;
 import com.emergency.database.UserDatabase;
 import com.emergency.exceptions.DuplicateUserException;
 
-/**
- * Handles validation and registration of new users.
- */
 public class UserRegistration {
     private UserDatabase userDatabase;
 
@@ -17,12 +14,15 @@ public class UserRegistration {
                                 String contactName, String relationship, String contactPhone)
             throws DuplicateUserException {
 
-        if (userDatabase.isUserExists(userId)) {
-            throw new DuplicateUserException("User with ID '" + userId + "' already exists!");
+        UserValidator.validateUserDetails(userId, fullName, phone, city, contactName, relationship, contactPhone);
+
+        String normalizedId = userId.trim();
+        if (userDatabase.isUserExists(normalizedId)) {
+            throw new DuplicateUserException("User with ID '" + normalizedId + "' already exists!");
         }
 
-        EmergencyContact contact = new EmergencyContact(contactName, relationship, contactPhone);
-        User newUser = new User(userId, fullName, phone, city, contact);
+        EmergencyContact contact = new EmergencyContact(contactName.trim(), relationship.trim(), contactPhone.trim());
+        User newUser = new User(normalizedId, fullName.trim(), phone.trim(), city.trim(), contact);
         userDatabase.addUser(newUser);
         return newUser;
     }

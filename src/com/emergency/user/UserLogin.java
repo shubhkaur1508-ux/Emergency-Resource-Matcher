@@ -2,9 +2,6 @@ package com.emergency.user;
 
 import com.emergency.database.UserDatabase;
 
-/**
- * Validates and authenticates user login details using stored users.
- */
 public class UserLogin {
     private UserDatabase userDatabase;
 
@@ -13,10 +10,16 @@ public class UserLogin {
     }
 
     public boolean authenticate(String userId) {
-        return userDatabase.isUserExists(userId);
+        if (userId == null || userId.trim().isEmpty()) {
+            return false;
+        }
+        return userDatabase.isUserExists(userId.trim());
     }
 
     public User getUser(String userId) {
-        return userDatabase.findUserById(userId);
+        if (userId == null || userId.trim().isEmpty()) {
+            return null;
+        }
+        return userDatabase.findUserById(userId.trim());
     }
 }

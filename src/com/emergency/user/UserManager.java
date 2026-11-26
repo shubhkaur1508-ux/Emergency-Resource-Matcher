@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import com.emergency.database.UserDatabase;
 import com.emergency.exceptions.DuplicateUserException;
 
-/**
- * Coordinates user management operations like registration, lookup, and listing.
- */
 public class UserManager {
     private UserDatabase userDatabase;
     private UserRegistration userRegistration;
@@ -24,8 +21,23 @@ public class UserManager {
         return userRegistration.registerNewUser(userId, fullName, phone, city, contactName, relationship, contactPhone);
     }
 
+    public boolean loginUser(String userId) {
+        if (!userLogin.authenticate(userId)) {
+            System.out.println("Login failed! User ID '" + userId + "' not found.");
+            return false;
+        }
+        User user = userLogin.getUser(userId);
+        System.out.println("Login successful! Welcome, " + user.getFullName() + ".");
+        return true;
+    }
+
     public User findUser(String userId) {
         return userLogin.getUser(userId);
+    }
+
+    public void displayUserProfile(String userId) {
+        User user = findUser(userId);
+        UserProfile.printProfile(user);
     }
 
     public void displayAllUsers() {
